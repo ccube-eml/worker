@@ -1,0 +1,17 @@
+FROM ubuntu
+LABEL maintainer "John Doe john.doe@ccube-eml"
+
+# cCube injection.
+RUN curl -sSL https://raw.githubusercontent.com/ccube-eml/worker/master/install.sh | sh
+WORKDIR /ccube
+ENTRYPOINT ["python3", "-m", "worker"]
+
+# Environment preparation.
+
+# cCube configuration.
+ENV CCUBE_LEARN_COMMAND ""
+ENV CCUBE_LEARN_WORKING_DIRECTORY ""
+ENV CCUBE_LEARN_OUTPUT_FILES ""
+ENV CCUBE_PREDICT_COMMAND ""
+ENV CCUBE_PREDICT_WORKING_DIRECTORY ""
+ENV CCUBE_PREDICT_PREDICTIONS_FILE ""
